@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Cadastro de Cliente";
+}
+<h1>Contato</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        table {
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulário</h2>
+    <form action="/Home/Acao" method="post">
+        <table>
+            <tr>
+                <th><label for="Nome">Nome:</label></th>
+                <td><input type="text" id="nome" name="nome" required></td>
+            </tr>
+            <tr>
+                <th><label for="Sobrenome">Sobrenome:</label></th>
+                <td><input type="text" id="sobrenome" name="sobrenome" required></td>
+            </tr>
+            <tr>
+                <th><label for="Cpf">CPF:</label></th>
+                <td><input type="text" id="cpf" name="cpf" required pattern="\d{11}" title="Digite um CPF válido (ex: 12345678910)"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Enviar</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
