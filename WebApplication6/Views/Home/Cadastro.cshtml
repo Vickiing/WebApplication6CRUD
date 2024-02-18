@@ -1,68 +1,107 @@
-﻿@{
+﻿@model WebApplication6.Models.Cliente
+@{
     ViewData["Title"] = "Cadastro de Cliente";
 }
-<h1>Contato</h1>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
-        table {
-            width: 50%;
-            margin: auto;
-            border-collapse: collapse;
+        body {
+            padding-top: 50px;
         }
 
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
+        .form-container {
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <h2>Formulário</h2>
-    <form action="/Home/Acao" method="post">
-        <table>
-            <tr>
-                <th><label for="Nome">Nome:</label></th>
-                <td><input type="text" id="nome" name="nome" required></td>
-            </tr>
-            <tr>
-                <th><label for="Sobrenome">Sobrenome:</label></th>
-                <td><input type="text" id="sobrenome" name="sobrenome" required></td>
-            </tr>
-            <tr>
-                <th><label for="Cpf">CPF:</label></th>
-                <td><input type="text" id="cpf" name="cpf" required pattern="\d{11}" title="Digite um CPF válido (ex: 12345678910)"></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Enviar</button></td>
-            </tr>
-        </table>
-    </form>
+    <div class="container form-container">
+        <h2 class="text-center">Cadastro de Cliente</h2>
+        @if (ViewData["message"] != null)
+        {
+            <div class="alert alert-info" role="alert">
+                @ViewData["message"]
+            </div>
+        }
+
+        <!-- Formulário para Enviar -->
+        <form action="/Home/Acao" method="post" class="mb-3">
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="Sobrenome">Sobrenome:</label>
+                <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+            </div>
+            <div class="form-group">
+                <label for="Cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required pattern="\d{11}" title="Digite um CPF válido (ex: 12345678910)">
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+                @Html.ValidationMessageFor(model => model.Cpf)
+            </div>
+            <button type="submit" class="btn btn-primary float-left mr-1" name="submit" value="Enviar">Enviar</button>
+        </form>
+        
+        <!-- Formulário para Alterar/Deletar -->
+        <form action="/Home/Acao" method="post" class="mb-6">
+            <div class="form-group">
+                <label for="Id">Id:</label>
+                <input type="text" class="form-control" id="Id" name="id" maxlength="5" required>
+            </div>
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="Sobrenome">Sobrenome:</label>
+                <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+            </div>
+            <div class="form-group">
+                <label for="Cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required pattern="\d{11}" title="Digite um CPF válido (ex: 12345678910)">
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+                
+            </div>
+            <button type="submit" class="btn btn-success  float-left mr-3" name="submit" value="Alterar">Alterar</button>
+            <button type="submit" class="btn btn-danger  float-left mr-3" name="submit" value="Deletar">Deletar</button>
+        </form>
+
+        <form action="/Home/Consultar" method="get" class="mb-6">
+            <div class="form-group">
+                <label for="idCliente">Consultar Cliente por ID:</label>
+                <input type="text" class="form-control" id="idCliente" name="idCliente" placeholder="Digite o ID do Cliente" required>
+            </div>
+            <button type="submit" class="btn btn-info">Consultar</button>
+        </form>
+
+        @if (ViewBag.ClienteConsultado != null)
+        {
+            <h3>Cliente Consultado</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>CPF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@ViewBag.ClienteConsultado.Id</td>
+                        <td>@ViewBag.ClienteConsultado.Nome</td>
+                        <td>@ViewBag.ClienteConsultado.Sobrenome</td>
+                        <td>@ViewBag.ClienteConsultado.Cpf</td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
 </body>
 </html>
