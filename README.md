@@ -1,4 +1,4 @@
-#**Projeto de Cadastro de Clientes ASP.NET**
+# **Projeto de Cadastro de Clientes ASP.NET**
 Este é um projeto  para um sistema de cadastro de clientes utilizando ASP.NET Core com conexão MySQL.
 
 ##Pré-requisitos:
