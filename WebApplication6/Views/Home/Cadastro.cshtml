@@ -32,15 +32,15 @@
         <!-- Formulário para Enviar -->
         <form action="/Home/Acao" method="post" class="mb-3">
             <div class="form-group">
-                <label for="Nome">Nome:</label>
+                <label for="Nome" class="col">Nome:</label>
                 <input type="text" class="form-control" id="nome" name="nome" required>
             </div>
             <div class="form-group">
-                <label for="Sobrenome">Sobrenome:</label>
+                <label for="Sobrenome" class="col">Sobrenome:</label>
                 <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
             </div>
             <div class="form-group">
-                <label for="Cpf">CPF:</label>
+                <label for="Cpf" class="col">CPF:</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" required pattern="\d{11}" title="Digite um CPF válido (ex: 12345678910)">
                 <span asp-validation-for="Cpf" class="text-danger"></span>
                 @Html.ValidationMessageFor(model => model.Cpf)
@@ -51,19 +51,19 @@
         <!-- Formulário para Alterar/Deletar -->
         <form action="/Home/Acao" method="post" class="mb-6">
             <div class="form-group">
-                <label for="Id">Id:</label>
+                <label for="Id" class="col">Id:</label>
                 <input type="text" class="form-control" id="Id" name="id" maxlength="5" required>
             </div>
             <div class="form-group">
-                <label for="Nome">Nome:</label>
+                <label for="Nome" class="col">Nome:</label>
                 <input type="text" class="form-control" id="nome" name="nome" required>
             </div>
             <div class="form-group">
-                <label for="Sobrenome">Sobrenome:</label>
+                <label for="Sobrenome" class="col">Sobrenome:</label>
                 <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
             </div>
             <div class="form-group">
-                <label for="Cpf">CPF:</label>
+                <label for="Cpf" class="col">CPF:</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" required pattern="\d{11}" title="Digite um CPF válido (ex: 12345678910)">
                 <span asp-validation-for="Cpf" class="text-danger"></span>
                 
@@ -74,7 +74,7 @@
 
         <form action="/Home/Consultar" method="get" class="mb-6">
             <div class="form-group">
-                <label for="idCliente">Consultar Cliente por ID:</label>
+                <label for="idCliente" class="col">Consultar Cliente por ID:</label>
                 <input type="text" class="form-control" id="idCliente" name="idCliente" placeholder="Digite o ID do Cliente" required>
             </div>
             <button type="submit" class="btn btn-info">Consultar</button>
